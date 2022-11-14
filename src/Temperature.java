@@ -1,24 +1,20 @@
 /*
- * Nagy János, 2022-11-12
- * Copyright (init) 2022, Nagy János
+ * Balogh Csenge, 2022-11-14
+ * Copyright (c), Balogh Csenge
  * Licenc: MIT
  */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-// TODO: method names
-// TODO: variable names
-
-public class Temp {
+public class Temperature {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Double> tempList;
 
-    // initial array of temp values
-    public Temp() {
+    public Temperature() {
 
         Double[] initialList = { 0.0, 0.0, 0.0, 0.0 };
-        this.tempList = new ArrayList<>(Arrays.asList(initialList));        
+        tempList = new ArrayList<>(Arrays.asList(initialList));        
     }
 
     public void init() {
@@ -34,7 +30,6 @@ public class Temp {
         }
     }
 
-    // gets user input once
     public String getUserInput() {
 
         System.out.print("Hőmérséklet: ");
@@ -43,7 +38,7 @@ public class Temp {
 
     }
     
-    // next input OR output log on condition
+    // method not needed
     public void addOrLog(String tempStr) {
         if (!tempStr.equals("vege")) {
             addToList(tempStr);
@@ -62,7 +57,6 @@ public class Temp {
         }
     }
     
-    // validates input format
     public boolean isValidInput(String a) {
 
         boolean valid = false;
