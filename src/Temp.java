@@ -1,6 +1,6 @@
 /*
  * Nagy János, 2022-11-12
- * Copyright (c) 2022, Nagy János
+ * Copyright (init) 2022, Nagy János
  * Licenc: MIT
  */
 import java.util.ArrayList;
@@ -11,65 +11,73 @@ import java.util.Scanner;
 // TODO: variable names
 
 public class Temp {
-    ArrayList<Double> b;
+    Scanner scanner = new Scanner(System.in);
+    ArrayList<Double> tempList;
 
     // initial array of temp values
     public Temp() {
-        Double[] z = { 2.5, 2.8, 1.2, 0.5, -1.1 };
-        this.b = new ArrayList<>(Arrays.asList(z));        
+
+        Double[] initialList = { 0.0, 0.0, 0.0, 0.0 };
+        this.tempList = new ArrayList<>(Arrays.asList(initialList));        
     }
 
-    // i() called here in loop
-    public void c() {
-        String t = "";
-        while(!t.equals("vege")) {
-            t = i();
-            lep(t);
+    public void init() {
+        String inputString = "";
+        // TODO: do, while, break (?)
+        while(true) {
+            inputString = getUserInput();
+
+            if (inputString == "vege") {
+                break;
+            }
+            
+            addOrLog(inputString);
+            
         }
     }
 
     // gets user input once
-    public String i() {
-        Scanner r = new Scanner(System.in);
+    public String getUserInput() {
+
         System.out.print("Hőmérséklet: ");
-        return r.nextLine();
+        String inputString = scanner.nextLine();
+        return inputString;
+
     }
     
     // next input OR output log on condition
-    public void lep(String tempStr) {
+    public void addOrLog(String tempStr) {
         if (!tempStr.equals("vege")) {
-            output(tempStr);
+            addToList(tempStr);
         }else {
-            wl();
+            logOutput();
         }
     }    
 
-    // adds input double to array on condition
-    public void output(String tempStr) {
-        if (cik(tempStr)) {
-            double temp = Double.parseDouble(tempStr);
-            b.add(temp);
+    // TODO: trycatch(?)
+    public void addToList(String tempString) {
+        if (isValidInput(tempString)) {
+            double tempDouble = Double.parseDouble(tempString);
+            tempList.add(tempDouble);
         }else {
             System.err.println("Hiba! Számot kell beírni!");
         }
     }
-
-    // TODO: a == tempStr (?)
     
     // validates input format
-    public boolean cik(String a) {
-        // TODO: one return statement only
+    public boolean isValidInput(String a) {
+
+        boolean valid = false;
+
         if (a.matches("[0-9.]+")) {
-            return true;
-        }else {
-            return false;
+            valid = true;
         }
+        return valid;
     }
 
-    // prints out the array elements (output log)
-    public void wl() {
-        for (double z : this.b) {
-            System.out.print(z + " ");
+    public void logOutput() {
+        for (double temp : this.tempList) {
+            System.out.print(temp + " ");
         }
         System.out.println();
     }
