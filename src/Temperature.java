@@ -3,11 +3,13 @@
  * Copyright (c), Balogh Csenge
  * Licenc: MIT
  */
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Temperature {
+
     Scanner scanner = new Scanner(System.in);
     ArrayList<Double> tempList;
 
@@ -34,25 +36,41 @@ public class Temperature {
 
         System.out.print("Hőmérséklet: ");
         String inputString = scanner.nextLine();
-        return inputString;
 
+        return inputString;
     }
     
-    // method not needed
     public void addOrLog(String tempStr) {
+
         if (!tempStr.equals("vege")) {
+
             addToList(tempStr);
         }else {
+
             logOutput();
         }
     }    
 
-    // TODO: trycatch(?)
+    public void logOutput() {
+
+        for (double temp : tempList) {
+
+            System.out.print(temp + " ");
+        }
+
+        System.out.println();
+        System.exit(0);
+    }
+
     public void addToList(String tempString) {
+
         if (isValidInput(tempString)) {
+
             double tempDouble = Double.parseDouble(tempString);
             tempList.add(tempDouble);
-        }else {
+
+        } else {
+
             System.err.println("Hiba! Számot kell beírni!");
         }
     }
@@ -64,14 +82,8 @@ public class Temperature {
         if (a.matches("[0-9.]+")) {
             valid = true;
         }
+
         return valid;
     }
 
-    public void logOutput() {
-        for (double temp : tempList) {
-            System.out.print(temp + " ");
-        }
-        System.out.println();
-        System.exit(0);
-    }
 }
