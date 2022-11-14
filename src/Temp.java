@@ -22,17 +22,15 @@ public class Temp {
     }
 
     public void init() {
-        String inputString = "";
-        // TODO: do, while, break (?)
+
         while(true) {
-            inputString = getUserInput();
+            String inputString = getUserInput();
 
             if (inputString == "vege") {
                 break;
             }
-            
+
             addOrLog(inputString);
-            
         }
     }
 
@@ -76,9 +74,10 @@ public class Temp {
     }
 
     public void logOutput() {
-        for (double temp : this.tempList) {
+        for (double temp : tempList) {
             System.out.print(temp + " ");
         }
         System.out.println();
+        System.exit(0);
     }
 }
