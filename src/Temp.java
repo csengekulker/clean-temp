@@ -7,14 +7,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// TODO: method names
+// TODO: variable names
+
 public class Temp {
     ArrayList<Double> b;
 
+    // initial array of temp values
     public Temp() {
         Double[] z = { 2.5, 2.8, 1.2, 0.5, -1.1 };
         this.b = new ArrayList<>(Arrays.asList(z));        
     }
 
+    // i() called here in loop
     public void c() {
         String t = "";
         while(!t.equals("vege")) {
@@ -23,12 +28,14 @@ public class Temp {
         }
     }
 
+    // gets user input once
     public String i() {
         Scanner r = new Scanner(System.in);
         System.out.print("Hőmérséklet: ");
         return r.nextLine();
     }
     
+    // next input OR output log on condition
     public void lep(String tempStr) {
         if (!tempStr.equals("vege")) {
             output(tempStr);
@@ -37,6 +44,7 @@ public class Temp {
         }
     }    
 
+    // adds input double to array on condition
     public void output(String tempStr) {
         if (cik(tempStr)) {
             double temp = Double.parseDouble(tempStr);
@@ -45,8 +53,12 @@ public class Temp {
             System.err.println("Hiba! Számot kell beírni!");
         }
     }
+
+    // TODO: a == tempStr (?)
     
+    // validates input format
     public boolean cik(String a) {
+        // TODO: one return statement only
         if (a.matches("[0-9.]+")) {
             return true;
         }else {
@@ -54,6 +66,7 @@ public class Temp {
         }
     }
 
+    // prints out the array elements (output log)
     public void wl() {
         for (double z : this.b) {
             System.out.print(z + " ");
